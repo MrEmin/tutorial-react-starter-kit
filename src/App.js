@@ -1,5 +1,9 @@
-import { createElement } from "react";
+import { createElement, Fragment } from "react";
 import "./style.scss";
+
+function Button(props) {
+  return  <button>{props.text}</button>
+}
 
 function App() {
   //jsx olmasaydı react'i bu şekilde kullanırdık.
@@ -7,6 +11,9 @@ function App() {
   const todos = ["todo1", "todo2", "todo3"];
   /* const h1 = createElement("h1", null, "prototurk.com");
   const ul = createElement('ul', null, todos.map(todo => createElement('li', null, todo)))
+  const button = createElement(Button, {
+    texxt: 'Buton texti'
+  }, null) //burda illa html etiketi kullanmaya gerek yok. Kendi Button komponentimizden react komponenti türettik.
   return createElement(
     "main",
     {
@@ -23,7 +30,8 @@ function App() {
   }
 
   return (
-    <main id="main" className="test">
+    <>
+      <Button text='Buton Texti'/>
       <h1 tabIndex='3' style={{ color: "red", backgroundColor: "yellow" }}>prototurk.com</h1>
       <label htmlFor="search" tabIndex='2' onClick={() => alert('merhaba!')}>Arama</label>
       <input type="text" id="search" tabIndex='1'></input> {/* tab'a bastığında ilk buna fokuslanır. */}
@@ -40,7 +48,7 @@ function App() {
           <li key={index}>{todo}</li>
         ))}
       </ul>
-    </main>
+    </>
   );
 }
 
