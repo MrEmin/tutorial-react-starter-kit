@@ -1,6 +1,7 @@
 import { createElement, Fragment } from "react";
 import "./tailwind.css";
 import Button from "./components/Button";
+import Tab from "./components/Tab";
 
 function Btn(props) {
   return <button>{props.text}</button>;
@@ -32,13 +33,20 @@ function App() {
 
   return (
     <>
+
       <div style={{padding: 20}}>
-        <Button>
-          Buton örneği
-        </Button>
-        <Button text="Buton örneği" variant="success" />
-        <Button text="Buton örneği" variant="danger" />
-        <Button text="Buton örneği" variant="warning" />
+        <Tab activeTab={1}>
+          <Tab.Panel title='Profil'>1. tab</Tab.Panel>
+          <Tab.Panel title='Hakkında'>2. tab</Tab.Panel>
+          <Tab.Panel title='Ayarlar'>3. tab</Tab.Panel>
+        </Tab>
+      </div>
+
+      <div style={{ padding: 20 }}>
+        <Button>Buton örneği</Button>
+        <Button variant="success">Buton örneği</Button>
+        <Button variant="danger">Buton örneği</Button>
+        <Button variant="warning">Buton örneği</Button>
       </div>
       <h1 tabIndex="3" style={{ color: "red", backgroundColor: "yellow" }}>
         prototurk.com

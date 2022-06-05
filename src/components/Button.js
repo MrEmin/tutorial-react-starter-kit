@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-function Button({ children, text, variant = "default" }) {
+function Button({ children, variant = "default" }) {
     console.log(children);
   return (
     <button
@@ -12,7 +12,7 @@ function Button({ children, text, variant = "default" }) {
         "bg-yellow-300 text-yellow-800": variant === "warning",
       })}
     >
-      {text}
+      {children}
     </button>
   );
 }
