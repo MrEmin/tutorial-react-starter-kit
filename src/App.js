@@ -1,47 +1,46 @@
-import { useEffect } from "react";
-import logo from "./logo.svg";
-import Test from "./Test";
-import { Title } from "./Components";
-import Bootstrap from "./Bootstrap";
-import Tailwind from "./Tailwind";
-
-// Module css kullandığımız için bu artık bir objedir.
-import styles from './App.module.css'
-import './tailwind.css';
+import { createElement } from "react";
+import "./style.scss";
 
 function App() {
-  console.log(styles);
+  //jsx olmasaydı react'i bu şekilde kullanırdık.
+  const name = 'Muhammet'
+  const todos = ["todo1", "todo2", "todo3"];
+  /* const h1 = createElement("h1", null, "prototurk.com");
+  const ul = createElement('ul', null, todos.map(todo => createElement('li', null, todo)))
+  return createElement(
+    "main",
+    {
+      className: "test",
+      id: "main",
+    },
+    h1, ul
+  ); */
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      // analytici bilgilendir
-    }
-  })
+  // bu ise jsx kullanımı. Jsx ile html gibi yazmak çok daha kolaydır.
 
-  // .env dosyalarının başı her zaman REACT_APP_ şeklinde başlamalıdır. Devamında kendi isimlendirmelerimizi yapmalıyız.
-
-  // .env'de daha çok public olan key'leri kullanmalıyız, api url'leri zaten public. Private key'leri env içerisine yazmamalıyız. Bu işlem client side bir işlem olduğu için herkes görebilmektedir.
+  const searchFunction = () => {
+    alert('hello!')
+  }
 
   return (
-    <div className={styles.App}>
-      <Title>{process.env.NODE_ENV}</Title> {/* ortam değişkenleri - environment variables*/}
-      <Title theme="dark">{process.env.NODE_ENV}</Title>
+    <main id="main" className="test">
+      <h1 tabIndex='3' style={{ color: "red", backgroundColor: "yellow" }}>prototurk.com</h1>
+      <label htmlFor="search" tabIndex='2' onClick={() => alert('merhaba!')}>Arama</label>
+      <input type="text" id="search" tabIndex='1'></input> {/* tab'a bastığında ilk buna fokuslanır. */}
+      <ul>
+        {name + ' Emin'}
 
-      <p>
-        {process.env.REACT_APP_API_URL}
-      </p>
-      <Test/>
+        {/* uzun hali */}
+        {todos.map(function(todo, index) {
+          return <li key={index}>{todo}</li>
+        })}
 
-      {/* production ortramında çalışması için */}
-      {process.env.NODE_ENV === "production" && (
-        <>
-          <img src="/logo192.png" alt="" />
-          <img src={logo} alt="" />
-        </>
-      )}
-      <Bootstrap/>
-      <Tailwind/>
-    </div>
+        {/* kısa hali, arrow function kullandık. Eğer =>'den sonra {} açarsak geriye return döndürmeliyiz. Ama () açarsak gruplamış oluruz ve içine yazdıklarımız return olarak döner. Eğer ({}) böyle yaparsak her elementi obje olarak döndürmüş oluruz.*/}
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </main>
   );
 }
 
