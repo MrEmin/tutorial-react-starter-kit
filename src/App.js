@@ -1,4 +1,4 @@
-import { createElement, Fragment } from "react";
+import { createElement, Fragment, useState } from "react";
 import "./tailwind.css";
 import Button from "./components/Button";
 import Tab from "./components/Tab";
@@ -9,8 +9,13 @@ function Btn(props) {
 
 function App() {
   //jsx olmasaydı react'i bu şekilde kullanırdık.
+  
   const name = "Muhammet";
   const todos = ["todo1", "todo2", "todo3"];
+
+  const [activeTab, setActiveTab] = useState(1)
+  console.log(activeTab);
+
   /* const h1 = createElement("h1", null, "prototurk.com");
   const ul = createElement('ul', null, todos.map(todo => createElement('li', null, todo)))
   const button = createElement(Button, {
@@ -35,7 +40,10 @@ function App() {
     <>
 
       <div style={{padding: 20}}>
-        <Tab activeTab={1}>
+        <button onClick={() => setActiveTab(2)}>
+          Aktif Tabı Değiştir
+        </button>
+        <Tab activeTab={activeTab} setActiveTab={setActiveTab}>
           <Tab.Panel title='Profil'>1. tab</Tab.Panel>
           <Tab.Panel title='Hakkında'>2. tab</Tab.Panel>
           <Tab.Panel title='Ayarlar'>3. tab</Tab.Panel>
