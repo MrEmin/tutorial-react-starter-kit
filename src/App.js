@@ -1,13 +1,14 @@
 import { createElement, Fragment } from "react";
-import "./style.scss";
+import "./tailwind.css";
+import Button from "./components/Button";
 
-function Button(props) {
-  return  <button>{props.text}</button>
+function Btn(props) {
+  return <button>{props.text}</button>;
 }
 
 function App() {
   //jsx olmasaydı react'i bu şekilde kullanırdık.
-  const name = 'Muhammet'
+  const name = "Muhammet";
   const todos = ["todo1", "todo2", "todo3"];
   /* const h1 = createElement("h1", null, "prototurk.com");
   const ul = createElement('ul', null, todos.map(todo => createElement('li', null, todo)))
@@ -26,21 +27,33 @@ function App() {
   // bu ise jsx kullanımı. Jsx ile html gibi yazmak çok daha kolaydır.
 
   const searchFunction = () => {
-    alert('hello!')
-  }
+    alert("hello!");
+  };
 
   return (
     <>
-      <Button text='Buton Texti'/>
-      <h1 tabIndex='3' style={{ color: "red", backgroundColor: "yellow" }}>prototurk.com</h1>
-      <label htmlFor="search" tabIndex='2' onClick={() => alert('merhaba!')}>Arama</label>
-      <input type="text" id="search" tabIndex='1'></input> {/* tab'a bastığında ilk buna fokuslanır. */}
+      <div style={{padding: 20}}>
+        <Button>
+          Buton örneği
+        </Button>
+        <Button text="Buton örneği" variant="success" />
+        <Button text="Buton örneği" variant="danger" />
+        <Button text="Buton örneği" variant="warning" />
+      </div>
+      <h1 tabIndex="3" style={{ color: "red", backgroundColor: "yellow" }}>
+        prototurk.com
+      </h1>
+      <label htmlFor="search" tabIndex="2" onClick={() => alert("merhaba!")}>
+        Arama
+      </label>
+      <input type="text" id="search" tabIndex="1"></input>{" "}
+      {/* tab'a bastığında ilk buna fokuslanır. */}
       <ul>
-        {name + ' Emin'}
+        {name + " Emin"}
 
         {/* uzun hali */}
-        {todos.map(function(todo, index) {
-          return <li key={index}>{todo}</li>
+        {todos.map(function (todo, index) {
+          return <li key={index}>{todo}</li>;
         })}
 
         {/* kısa hali, arrow function kullandık. Eğer =>'den sonra {} açarsak geriye return döndürmeliyiz. Ama () açarsak gruplamış oluruz ve içine yazdıklarımız return olarak döner. Eğer ({}) böyle yaparsak her elementi obje olarak döndürmüş oluruz.*/}
